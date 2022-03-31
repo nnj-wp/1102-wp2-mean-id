@@ -1,5 +1,5 @@
-import logo from '../assets/images/logo.svg';
-import main from '../assets/images/main.svg';
+import Logo_51 from '../components/Logo_51';
+import main from '../assets/images/undraw_everyday_life_hjnw.svg';
 
 import styled from 'styled-components';
 
@@ -7,7 +7,7 @@ const Landing_51 = () => {
   return (
     <Wrapper>
       <nav>
-        <img src={logo} alt="jobify" className="logo" />
+        <Logo_51 />
       </nav>
       <div className="container page">
         <div className="info">
