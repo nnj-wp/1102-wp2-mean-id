@@ -3,9 +3,12 @@
 
 // ES6
 import express from 'express';
-import { allowedNodeEnvironmentFlags } from 'process';
+import connectDB_51 from './db/connect_51.js';
 
 const app = express();
+
+import dotenv from 'dotenv';
+dotenv.config();
 
 app.get('/', (req, res) => {
   res.send('Welcome 邵恩傑 209410751');
@@ -13,4 +16,14 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+const start = async () => {
+  try {
+    await connectDB_51(process.env.MONGO_LOCAL_URL).then(() => {
+      console.log('Connect to MongoDB');
+    });
+    app.listen(port, () => console.log(`Server is running on port ${port}`));
+  } catch (err) {
+    console.log(err);
+  }
+};
+start();
