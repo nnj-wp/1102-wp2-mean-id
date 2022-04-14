@@ -4,6 +4,7 @@ import Wrapper from '../assets/wrappers/Register_51';
 
 import { useAppContext } from '../context/appContext_51';
 import Alert_51 from '../components/Alert_51';
+import { DISPLAY_ALERT } from '../context/action_51';
 
 const initialState = {
   name: '',
@@ -16,7 +17,7 @@ const initialState = {
 const Register_51 = () => {
   const [values, setValues] = useState(initialState);
 
-  const { showAlert, displayAlrtt } = useAppContext();
+  const { showAlert, displayAlert } = useAppContext();
 
   const handleChange = (e) => {
     console.log('e.target', e.target);
@@ -25,14 +26,18 @@ const Register_51 = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('e.target', e.target);
+    const { email, password } = values;
+    if (!email || !password) {
+      displayAlert();
+      return;
+    }
   };
   return (
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
         <LOGO_51 />
         <h3>Register</h3>
-        {showAlert}
+        {showAlert && <Alert_51 />}
         {/* name input */}
         <FormRow_51
           type="text"

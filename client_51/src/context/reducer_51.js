@@ -1,10 +1,10 @@
-import { DIDPLAY_ALERT } from './action_51';
+import { DISPLAY_ALERT, CLEAR_ALERT } from './action_51';
 
 const reducer_51 = (state, action) => {
-  if (action.type === DIDPLAY_ALERT) {
+  if (action.type === DISPLAY_ALERT) {
     return {
       ...state,
-      showAlert: type,
+      showAlert: true,
       alertText: 'please provide all values',
       alertType: 'danger',
     };
