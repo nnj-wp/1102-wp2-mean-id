@@ -19,6 +19,10 @@ const Register_51 = () => {
 
   const { showAlert, displayAlert } = useAppContext();
 
+  const toggleMember = () => {
+    setValues({ ...values, isMember: !values.isMember });
+  };
+
   const handleChange = (e) => {
     console.log('e.target', e.target);
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -36,16 +40,19 @@ const Register_51 = () => {
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
         <LOGO_51 />
-        <h3>Register</h3>
+        <h3> {values.isMember ? 'Login' : 'Register'} </h3>
         {showAlert && <Alert_51 />}
         {/* name input */}
-        <FormRow_51
-          type="text"
-          name="name"
-          value={values.name}
-          handleChange={handleChange}
-          className="form-input"
-        />
+        {!values.isMember && (
+          <FormRow_51
+            type="text"
+            name="name"
+            value={values.name}
+            handleChange={handleChange}
+            className="form-input"
+          />
+        )}
+
         {/* email input */}
         <FormRow_51
           type="email"
@@ -66,6 +73,12 @@ const Register_51 = () => {
         <button className="btn btn-block" type="submit">
           submit
         </button>
+        <p>
+          {values.isMember ? 'Not a member yet?' : 'Alreaedy a member?'}
+          <button type="button" className="member-btn" onClick={toggleMember}>
+            {values.isMember ? 'Register' : 'Login'}
+          </button>
+        </p>
       </form>
     </Wrapper>
   );
