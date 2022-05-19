@@ -1,5 +1,15 @@
-const register_51 = async (req, res) => {
-  res.send('register user -- 邵恩傑, 209410751');
+import User_51 from '../models.js/User_51.js';
+
+const register_51 = async (req, res, next) => {
+  try {
+    // res.send('register user -- 邵恩傑, 209410751');
+    console.log('body', req.body);
+    const user = await User_51.create(req.body);
+    res.status(201).json({ user });
+  } catch (err) {
+    // res.status(500).json({ msg: 'Err on registering user' });
+    next(err);
+  }
 };
 
 const login_51 = async (req, res) => {
