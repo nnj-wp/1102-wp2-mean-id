@@ -5,10 +5,6 @@ const UserSchema_51 = new mongoose.Schema({
   name: {
     type: String,
     requires: [true, 'please provide name'],
-    validate: {
-      validator: validator.isEmail,
-      message: 'please provide valid email',
-    },
     minlength: 3,
     maxlength: 20,
     trim: true,
@@ -16,6 +12,10 @@ const UserSchema_51 = new mongoose.Schema({
   email: {
     type: String,
     requires: [true, 'please provide email'],
+    validate: {
+      validator: validator.isEmail,
+      message: 'please provide valid email',
+    },
     unique: true,
   },
   password: {
