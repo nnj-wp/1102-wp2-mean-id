@@ -5,7 +5,9 @@ const register_51 = async (req, res, next) => {
     // res.send('register user -- 邵恩傑, 209410751');
     console.log('body', req.body);
     const user = await User_51.create(req.body);
-    res.status(201).json({ user });
+    const token = user.createJWT();
+    // console.log('token', token);
+    res.status(201).json({ user, token });
   } catch (err) {
     // res.status(500).json({ msg: 'Err on registering user' });
     next(err);

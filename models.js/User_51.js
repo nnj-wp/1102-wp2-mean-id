@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import validator from 'validator';
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 const UserSchema_51 = new mongoose.Schema({
   name: {
@@ -37,5 +39,17 @@ const UserSchema_51 = new mongoose.Schema({
     default: 'my city',
   },
 });
+
+UserSchema_51.pre('save', async function () {
+  console.log('password', this.password);
+  const salt = await bcrypt.genSalt(10);
+  this.password = await bcrypt.hash(this.password, salt);
+});
+
+UserSchema_51.methods.createJWT = function () {
+  // console.log('this', this);
+  return jwt.sign({ userId: this._id }, 'jwtsecret', 
+  { expiresIn: '1d' });
+};
 
 export default mongoose.model('User_51', UserSchema_51);
