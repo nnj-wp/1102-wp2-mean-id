@@ -1,17 +1,23 @@
 import User_51 from '../models.js/User_51.js';
+import { StatusCodes } from 'http-status-codes';
 
 const register_51 = async (req, res, next) => {
-  try {
-    // res.send('register user -- 邵恩傑, 209410751');
-    console.log('body', req.body);
-    const user = await User_51.create(req.body);
-    const token = user.createJWT();
-    // console.log('token', token);
-    res.status(201).json({ user, token });
-  } catch (err) {
-    // res.status(500).json({ msg: 'Err on registering user' });
-    next(err);
-  }
+  console.log('body', req.body);
+  const user = await User_51.create(req.body);
+  const token = user.createJWT();
+  res.status(StatusCodes.CREATED).json({ user, token });
+
+  // try {
+  //   // res.send('register user -- 邵恩傑, 209410751');
+  //   console.log('body', req.body);
+  //   const user = await User_51.create(req.body);
+  //   const token = user.createJWT();
+  //   // console.log('token', token);
+  //   res.status(201).json({ user, token });
+  // } catch (err) {
+  //   // res.status(500).json({ msg: 'Err on registering user' });
+  //   next(err);
+  // }
 };
 
 const login_51 = async (req, res) => {
