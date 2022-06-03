@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Dashboard_51 = () => {
   return <div>Dashboard</div>;
 };

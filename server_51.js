@@ -10,6 +10,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import morgan from 'morgan';
+import cors from 'cors';
 
 // db and authenticateUser
 
@@ -25,12 +26,13 @@ import errorHandlerMiddleware_51 from './middleware/error-hander_51.js';
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));
 }
-
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
   // throw new Error('testing for error');
-  res.send('Welcome 邵恩傑 209410751');
+  // res.send('Welcome 邵恩傑 209410751');
+  res.json({ msg: 'Welcome -- 邵恩傑 209410751' });
 });
 
 app.use('/api/v1/auth_51', authRoutes_51);
@@ -42,7 +44,7 @@ const port = process.env.PORT || 5000;
 
 const start = async () => {
   try {
-    await connectDB_51(process.env.MONGO_LOCAL_URL).then(() => {
+    await connectDB_51(process.env.MONGO_URL).then(() => {
       console.log('Connect to MongoDB');
     });
     app.listen(port, () => console.log(`Server is running on port ${port}`));

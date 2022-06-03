@@ -1,3 +1,4 @@
+import React from 'react';
 import Logo_51 from '../components/Logo_51';
 import main from '../assets/images/undraw_everyday_life_hjnw.svg';
 

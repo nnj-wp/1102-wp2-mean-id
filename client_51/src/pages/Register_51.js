@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LOGO_51, FormRow_51 } from '../components';
 import Wrapper from '../assets/wrappers/Register_51';
 
