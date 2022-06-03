@@ -13,9 +13,9 @@ const TesFetchUseProxy_51 = async () => {
   console.log('axios data2', data2.data);
 
   const currentUser = {
-    name: '邵恩傑4',
-    email: '2094107515@gms.tku.edu.tw',
-    password: 'secret5',
+    name: '邵恩傑7',
+    email: '2094107517@gms.tku.edu.tw',
+    password: 'secret7',
   };
 
   try {
@@ -29,4 +29,4 @@ const TesFetchUseProxy_51 = async () => {
   }
 };
 
-export default TesFetchUseCors_51;
+export default TesFetchUseProxy_51;

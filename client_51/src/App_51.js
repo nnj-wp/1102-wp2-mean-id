@@ -8,6 +8,7 @@ import {
   Register_51,
   Error_51,
   TesFetchUseCors_51,
+  TesFetchUseProxy_51,
 } from './pages';
 import styled from 'styled-components';
 
@@ -19,6 +20,7 @@ function App_51() {
         <Route path="/landing" element={<Landing_51 />} />
         <Route path="/register" element={<Register_51 />} />
         <Route path="/testcors" element={<TesFetchUseCors_51 />} />
+        <Route path="/testproxy" element={<TesFetchUseProxy_51 />} />
         <Route path="*" element={<Error_51 />} />
       </Routes>
       {/* <Landing_51 /> */}
