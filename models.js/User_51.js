@@ -48,8 +48,14 @@ UserSchema_51.pre('save', async function () {
 
 UserSchema_51.methods.createJWT = function () {
   // console.log('this', this);
-  return jwt.sign({ userId: this._id }, 'jwtsecret', 
-  { expiresIn: '1d' });
+  return jwt.sign({ userId: this._id }, 'jwtsecret', { expiresIn: '1d' });
+};
+
+UserSchema_51.methods.comparePassword = async function (password) {
+  console.log('test');
+  const isMatch = await bcrypt.compare(password, this.password);
+
+  return isMatch;
 };
 
 export default mongoose.model('User_51', UserSchema_51);
