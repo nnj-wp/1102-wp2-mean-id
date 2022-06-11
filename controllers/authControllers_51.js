@@ -5,7 +5,9 @@ const register_51 = async (req, res, next) => {
   console.log('body', req.body);
   const user = await User_51.create(req.body);
   const token = user.createJWT();
-  res.status(StatusCodes.CREATED).json({ user, token });
+  res
+    .status(StatusCodes.CREATED)
+    .json({ user, token, location: user.location });
 
   // try {
   //   // res.send('register user -- 邵恩傑, 209410751');

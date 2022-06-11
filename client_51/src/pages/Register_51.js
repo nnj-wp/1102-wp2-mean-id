@@ -17,7 +17,7 @@ const initialState = {
 const Register_51 = () => {
   const [values, setValues] = useState(initialState);
 
-  const { showAlert, displayAlert } = useAppContext();
+  const { showAlert, displayAlert, registerUser } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -30,12 +30,24 @@ const Register_51 = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const { email, password } = values;
-    if (!email || !password) {
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
       displayAlert();
       return;
     }
+
+    const currentUser = { name, email, password };
+    console.log('form data', currentUser);
+    if (!isMember) {
+      registerUser({
+        currentUser,
+        endPoint: 'register_51',
+        alertText: 'User created! Redirecting ...',
+      });
+    } else {
+    }
   };
+
   return (
     <Wrapper>
       <form className="form" onSubmit={onSubmit}>
