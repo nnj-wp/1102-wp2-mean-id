@@ -23,7 +23,8 @@ const register_51 = async (req, res, next) => {
 };
 
 const login_51 = async (req, res) => {
-  res.send('login user -- 邵恩傑, 209410751');
+  console.log('body', req.body);
+  res.json({ msg: 'login user -- 邵恩傑, 209410751' });
 };
 
 const updateUser_51 = async (req, res) => {

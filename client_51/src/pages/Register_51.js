@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { LOGO_51, FormRow_51 } from '../components';
-import Wrapper from '../assets/wrappers/Register_51';
+import Wrapper from '../assets/wrappers/Register_51.js';
 
 import { useAppContext } from '../context/appContext_51';
 import Alert_51 from '../components/Alert_51';
@@ -17,7 +17,7 @@ const initialState = {
 const Register_51 = () => {
   const [values, setValues] = useState(initialState);
 
-  const { showAlert, displayAlert, registerUser } = useAppContext();
+  const { showAlert, displayAlert, registerUser, loginUser } = useAppContext();
 
   const toggleMember = () => {
     setValues({ ...values, isMember: !values.isMember });
@@ -45,6 +45,11 @@ const Register_51 = () => {
         alertText: 'User created! Redirecting ...',
       });
     } else {
+      loginUser({
+        currentUser,
+        endPoint: 'login_51',
+        alertText: 'Login Success Redirecting ...',
+      });
     }
   };
 

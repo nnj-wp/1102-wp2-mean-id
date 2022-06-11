@@ -51,6 +51,19 @@ const AppProvider_51 = ({ children }) => {
     }
   };
 
+  const axiosLogin = async ({ currentUser, endPoint, alertText }) => {
+    try {
+      const { data } = await axios.post(
+        `/api/v1/auth_51/${endPoint}`,
+        currentUser
+      );
+      // console.log('login data', data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const registerUser = async ({ currentUser, endPoint, alertText }) => {
     dispatch({ type: REGISTER_USER_BEGIN });
     try {
@@ -72,11 +85,38 @@ const AppProvider_51 = ({ children }) => {
         payload: { msg: error.response.data.msg },
       });
     }
+    clearAlert();
+  };
+
+  const loginUser = async ({ currentUser, endPoint, alertText }) => {
+    dispatch({ type: LOGIN_USER_BEGIN });
+    try {
+      const data = await axiosLogin({
+        currentUser,
+        endPoint,
+        alertText,
+      });
+      console.log('login data', data);
+      /*
+      const { user, token, location } = data;
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload: { user, token, location, alertText },
+      });
+      */
+    } catch (error) {
+      console.log(error.response);
+      dispatch({
+        type: LOGIN_USER_ERROR,
+        payload: { msg: error.response.data.msg },
+      });
+    }
+    clearAlert();
   };
 
   return (
     <AppContext_51.Provider
-      value={{ ...state, displayAlert, clearAlert, registerUser }}
+      value={{ ...state, displayAlert, clearAlert, registerUser, loginUser }}
     >
       {children}
     </AppContext_51.Provider>
