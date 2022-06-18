@@ -7,7 +7,9 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  LOGOUT_USER,
 } from './action_51';
+import { initialState } from './appContext_51';
 
 const reducer_xx = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -79,6 +81,12 @@ const reducer_xx = (state, action) => {
       showAlert: true,
       alterType: 'danger',
       alertText: action.payload.msg,
+    };
+  }
+
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...initialState,
     };
   }
 
