@@ -1,10 +1,11 @@
+// import Logo_xx from '../components/Logo_xx';
 import React from 'react';
-import Logo_51 from '../components/Logo_51';
-import main from '../assets/images/undraw_everyday_life_hjnw.svg';
+import { Logo_51 } from '../components';
+import main from '../assets/images/main-alternative.svg';
 
 import styled from 'styled-components';
 
-const Landing_51 = () => {
+const Landing_xx = () => {
   return (
     <Wrapper>
       <nav>
@@ -16,20 +17,16 @@ const Landing_51 = () => {
             Job <span>Tracking</span> App
           </h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+            nobis eum temporibus tempore ad, pariatur tenetur, alias odio
+            asperiores voluptatibus sint? Aliquam aliquid commodi nulla.
           </p>
-          <a href="#" className="btn btn-hero">
+          <a href="/register" className="btn btn-hero">
             Login/Register
           </a>
         </div>
         <div>
-          <img src={main} alt="job hunt" className="img" />
+          <img src={main} alt="job hunt" className="img main-img" />
         </div>
       </div>
     </Wrapper>
@@ -79,4 +76,4 @@ const Wrapper = styled.main`
   }
 `;
 
-export default Landing_51;
+export default Landing_xx;

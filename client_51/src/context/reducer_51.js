@@ -1,6 +1,6 @@
 import {
-  DISPLAY_ALERT,
   CLEAR_ALERT,
+  DISPLAY_ALERT,
   REGISTER_USER_BEGIN,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
@@ -9,7 +9,7 @@ import {
   LOGIN_USER_ERROR,
 } from './action_51';
 
-const reducer_51 = (state, action) => {
+const reducer_xx = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
     return {
       ...state,
@@ -31,6 +31,7 @@ const reducer_51 = (state, action) => {
   if (action.type === REGISTER_USER_BEGIN) {
     return { ...state, isLoading: true };
   }
+
   if (action.type === REGISTER_USER_SUCCESS) {
     return {
       ...state,
@@ -43,12 +44,13 @@ const reducer_51 = (state, action) => {
       location: action.payload.location,
     };
   }
+
   if (action.type === REGISTER_USER_ERROR) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alterType: 'danger',
       alertText: action.payload.msg,
     };
   }
@@ -56,6 +58,7 @@ const reducer_51 = (state, action) => {
   if (action.type === LOGIN_USER_BEGIN) {
     return { ...state, isLoading: true };
   }
+
   if (action.type === LOGIN_USER_SUCCESS) {
     return {
       ...state,
@@ -68,17 +71,18 @@ const reducer_51 = (state, action) => {
       location: action.payload.location,
     };
   }
+
   if (action.type === LOGIN_USER_ERROR) {
     return {
       ...state,
       isLoading: false,
       showAlert: true,
-      alertType: 'danger',
+      alterType: 'danger',
       alertText: action.payload.msg,
     };
   }
 
-  throw new Error(`no such action ${action.type}`);
+  throw new Error(`no such action: ${action.type}`);
 };
 
-export default reducer_51;
+export default reducer_xx;

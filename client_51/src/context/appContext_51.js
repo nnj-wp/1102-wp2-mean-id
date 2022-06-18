@@ -1,9 +1,11 @@
 import React, { useReducer, useContext } from 'react';
+
 import reducer_51 from './reducer_51';
 import axios from 'axios';
+
 import {
-  DISPLAY_ALERT,
   CLEAR_ALERT,
+  DISPLAY_ALERT,
   REGISTER_USER_BEGIN,
   REGISTER_USER_SUCCESS,
   REGISTER_USER_ERROR,
@@ -44,20 +46,7 @@ const AppProvider_51 = ({ children }) => {
         `/api/v1/auth_51/${endPoint}`,
         currentUser
       );
-      // console.log('register data', data);
-      return data;
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  const axiosLogin = async ({ currentUser, endPoint, alertText }) => {
-    try {
-      const { data } = await axios.post(
-        `/api/v1/auth_51/${endPoint}`,
-        currentUser
-      );
-      // console.log('login data', data);
+      //   console.log('register data', data);
       return data;
     } catch (err) {
       console.log(err);
@@ -79,13 +68,25 @@ const AppProvider_51 = ({ children }) => {
         payload: { user, token, location, alertText },
       });
     } catch (error) {
-      console.log(error.response);
       dispatch({
         type: REGISTER_USER_ERROR,
         payload: { msg: error.response.data.msg },
       });
     }
     clearAlert();
+  };
+
+  const axiosLogin = async ({ currentUser, endPoint, alertText }) => {
+    try {
+      const { data } = await axios.post(
+        `/api/v1/auth_51/${endPoint}`,
+        currentUser
+      );
+      //   console.log('login data', data);
+      return data;
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const loginUser = async ({ currentUser, endPoint, alertText }) => {
@@ -103,7 +104,6 @@ const AppProvider_51 = ({ children }) => {
         payload: { user, token, location, alertText },
       });
     } catch (error) {
-      console.log(error.response);
       dispatch({
         type: LOGIN_USER_ERROR,
         payload: { msg: error.response.data.msg },

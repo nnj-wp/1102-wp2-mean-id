@@ -1,15 +1,15 @@
 import Landing_51 from './Landing_51';
-import Dashboard_51 from './Dashboard_51';
 import Register_51 from './Register_51';
 import Error_51 from './Error_51';
-import TesFetchUseCors_51 from './TesFetchUseCors_51';
-import TesFetchUseProxy_51 from './TesFetchUseProxy_51';
+import ProtectedRoute_51 from './ProtectedRoute_51';
+import TestFetchUseCors_51 from './TestFetchUseCors_51';
+import TestFetchUseProxy_51 from './TestFetchUseProxy_51';
 
 export {
   Landing_51,
-  Dashboard_51,
   Register_51,
   Error_51,
-  TesFetchUseCors_51,
-  TesFetchUseProxy_51,
+  ProtectedRoute_51,
+  TestFetchUseCors_51,
+  TestFetchUseProxy_51,
 };
