@@ -8,6 +8,10 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  TOGGLE_SIDEBAR,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from './action_51';
 import { initialState } from './appContext_51';
 
@@ -87,6 +91,40 @@ const reducer_xx = (state, action) => {
   if (action.type === LOGOUT_USER) {
     return {
       ...initialState,
+    };
+  }
+
+  if (action.type === TOGGLE_SIDEBAR) {
+    return {
+      ...state,
+      showSidebar: !state.showSidebar,
+    };
+  }
+
+  if (action.type === UPDATE_USER_BEGIN) {
+    return { ...state, isLoading: true };
+  }
+
+  if (action.type === UPDATE_USER_SUCCESS) {
+    return {
+      ...state,
+      isLoading: false,
+      token: action.payload.token,
+      user: action.payload.user,
+      location: action.payload.location,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'User Profile Updated!',
+    };
+  }
+
+  if (action.type === UPDATE_USER_ERROR) {
+    return {
+      ...state,
+      isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
     };
   }
 

@@ -13,6 +13,10 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
   LOGOUT_USER,
+  TOGGLE_SIDEBAR,
+  UPDATE_USER_BEGIN,
+  UPDATE_USER_SUCCESS,
+  UPDATE_USER_ERROR,
 } from './action_51';
 
 const initialState = {
@@ -134,6 +138,12 @@ const AppProvider_51 = ({ children }) => {
     removeUserFromLocalStorage();
   };
 
+  const toggleSidebar = async () => {
+    dispatch({ type: TOGGLE_SIDEBAR });
+  };
+
+  const updateUser = async ({ name, email, lastName, location }) => {};
+
   return (
     <AppContext_51.Provider
       value={{
@@ -143,6 +153,7 @@ const AppProvider_51 = ({ children }) => {
         registerUser,
         loginUser,
         logoutUser,
+        toggleSidebar,
       }}
     >
       {children}
